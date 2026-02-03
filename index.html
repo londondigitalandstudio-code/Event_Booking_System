@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>London Digital and Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI", sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f4f6fb;
+}
+/* SMALLER BUTTON TEXT – Routines & Devices */
+.action-btn{
+  font-size:8px;      /* decreased */
+  font-weight:500;
+}
+
+/* SMALLER ROOMS TEXT */
+.room h4{
+  font-size:8px;      /* decreased */
+  font-weight:600;
+}
+
+.room p{
+  font-size:8px;      /* decreased */
+}
+
+/* SMALLER SECTION TITLES */
+.section-title h3{
+  font-size:12px;      /* decreased */
+}
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,#6a5cff,#c77dff);
+  padding:25px 20px 60px;
+  color:#fff;
+  position:relative;
+}
+
+.header h2{ margin:0; font-size:22px; }
+
+.profile{
+  position:absolute;
+  right:20px;
+  top:20px;
+}
+.profile img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:2px solid #fff;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:10px;
+  margin:-40px 15px 20px;
+  padding:15px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  text-align:center;
+}
+.stat h3{ margin:0; color:#6a5cff; }
+.stat p{ margin-top:5px; font-size:13px; color:#9ca3af; }
+
+/* SECTION */
+.section{ padding:10px 20px; }
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.section-title h3{ margin:0; color:#4b5563; }
+.section-title span{ font-size:13px; color:#9ca3af; }
+
+/* BUTTON */
+.action-btn{
+  background:#ffffff;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:5px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.06);
+  font-size:12px;
+  color:#000000;
+  cursor:pointer;
+  transition:all .25s ease;
+  border:none;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+
+.action-btn:hover:not(.active){
+  background:#f9fafb;
+}
+
+.action-btn.active{
+  background:linear-gradient(135deg,#ff6aa2,#ff8fab);
+  color:#fff;
+  box-shadow:0 12px 25px rgba(255,106,162,0.35);
+}
+
+/* ROUTINES */
+.routines{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+}
+
+/* ROOMS */
+.rooms{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+}
+.room{
+  background:#fff;
+  border-radius:5px;
+  padding:15px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.06);
+}
+.room h4{ margin:0; color:#6a5cff; }
+.room p{ margin-top:6px; font-size:13px; color:#6b7280; }
+
+/* DEVICES */
+.devices{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>London Digital and Studio</h2>
+  <small>Event Management System</small>
+  <div class="profile">
+    <img src="https://i.pravatar.cc/100">
+  </div>
+</div>
+
+
+
+
+<!-- ROUTINES -->
+<div class="section">
+  <div class="section-title">
+    <h3>Routines</h3><span>View all</span>
+  </div>
+
+  <div class="routines">
+    <div class="action-btn" onclick="setActive(this); window.location.href='eb_system.html'">
+      Event Booking
+    </div>
+    <div class="action-btn" onclick="setActive(this); window.location.href='update_eb_system.html'">
+      Update Event
+    </div>
+    <div class="action-btn" onclick="setActive(this); window.location.href='booked_events.html'">
+      Booked Events
+    </div>
+  </div>
+</div>
+
+<!-- ROOMS -->
+<div class="section">
+  <div class="section-title">
+    <h3>Rooms</h3><span>View all</span>
+  </div>
+  <div class="rooms">
+    <div class="action-btn" onclick="setActive(this); window.location.href='event_schedule.html'">
+      Event Schedule
+    </div>
+    <div class="action-btn" onclick="setActive(this); window.location.href='booked_events.html'">
+      Booked Events
+    </div>
+  </div>
+</div>
+
+<!-- DEVICES -->
+<div class="section">
+  <div class="section-title">
+    <h3>Recently used devices</h3><span>View all</span>
+  </div>
+  <div class="devices">
+    <div class="action-btn" onclick="setActive(this)">Living room HVAC</div>
+    <div class="action-btn" onclick="setActive(this)">Bedroom Lights</div>
+    <div class="action-btn" onclick="setActive(this)">Living TV</div>
+    <div class="action-btn" onclick="setActive(this)">Rest Room</div>
+    <div class="action-btn" onclick="setActive(this)">Sami Room</div>
+  </div>
+</div>
+
+</body>
+<script>
+function setActive(el) {
+  document.querySelectorAll('.action-btn')
+    .forEach(btn => btn.classList.remove('active'));
+  el.classList.add('active');
+}
+
+async function loadDashboardStats() {
+  try {
+    const res = await fetch(
+      `${SHEET_URL}?action=getData&t=${Date.now()}`
+    );
+
+    const json = await res.json();
+    if (!json || !json.data) {
+      console.warn("No dashboard data received");
+      return;
+    }
+
+    const data = json.data;
+
+    /* 🔢 TOTAL BOOKED EVENTS */
+    const totalEl = document.getElementById("totalEvents");
+    if (totalEl) {
+      totalEl.textContent = data.length;
+    }
+
+    /* 📅 UPCOMING EVENT */
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let upcoming = null;
+
+    data.forEach(row => {
+      const d = toDate(row[0]);
+      if (d >= today) {
+        if (!upcoming || d < upcoming.date) {
+          upcoming = {
+            date: d,
+            type: row[2] || "Event"
+          };
+        }
+      }
+    });
+
+    const dateEl = document.getElementById("upcomingDate");
+    const typeEl = document.getElementById("upcomingType");
+
+    if (upcoming && dateEl && typeEl) {
+      dateEl.textContent = formatDateSafe(upcoming.date);
+      typeEl.textContent = upcoming.type;
+    } else if (dateEl && typeEl) {
+      dateEl.textContent = "No Upcoming";
+      typeEl.textContent = "";
+    }
+
+  } catch (err) {
+    console.error("Dashboard load failed", err);
+  }
+}
+
+
+</script>
+
+</body>
+</html>

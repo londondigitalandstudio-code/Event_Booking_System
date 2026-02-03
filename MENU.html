@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Management Menu</title>
+
+  <style>
+    /* --- Reset & Fonts --- */
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  body {
+    background: #eef2f6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .menu-wrapper {
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .menu-header h2 {
+    font-size: 24px;
+    color: #1f2937;
+    font-weight: 700;
+  }
+
+  .menu-header p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .menu-btn {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  .menu-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+
+  .menu-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Solid Professional Colors (NO MIRROR EFFECT) */
+  .book {
+    background: #1e40af;
+    color: #ffffff;
+  }
+
+  .update {
+    background: #166534;
+    color: #ffffff;
+  }
+
+  .schedule {
+    background: #b45309;
+    color: #ffffff;
+  }
+
+  .closed {
+    background: #374151;
+    color: #ffffff;
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #9ca3af;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div class="menu-wrapper">
+    <div class="menu-header">
+      <h2>Event Management</h2>
+      <p>Select an option to continue</p>
+    </div>
+
+    <button class="menu-btn book" onclick="location.href='eb_system.html'">
+      📘 Book Event
+    </button>
+
+    <button class="menu-btn update" onclick="location.href='update_eb_system.html'">
+      ✏️ Event Update
+    </button>
+
+    <button class="menu-btn schedule" onclick="location.href='event-schedule.html'">
+      📅 Event Schedule
+    </button>
+
+    <button class="menu-btn closed" onclick="location.href='closed-event.html'">
+      🔒 Closed Event
+    </button>
+
+    <button class="menu-btn closed" onclick="location.href='closed-event.html'">
+      🔒 Closed Event
+    </button>
+
+    <div class="footer-note">
+      © 2026 Events Booking System
+    </div>
+  </div>
+
+</body>
+</html>

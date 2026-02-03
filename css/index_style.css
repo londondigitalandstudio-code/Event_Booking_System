@@ -1,0 +1,250 @@
+:root {
+  --primary: #1f3a8a;
+  --green: #15803d;
+  --red: #b91c1c;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --border: #e6e9ef;
+  --text: #0f172a;
+  --muted: #64748b;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+}
+
+/* Center card in viewport */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden; /* prevent scrolling */
+}
+
+.page {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 28px rgba(15,23,42,0.06);
+}
+
+/* Header */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.title::before {
+  content: "";
+  width: 5px;
+  height: 30px;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+/* Section title */
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.6px;
+  margin-bottom: 16px;
+}
+
+/* Menu buttons */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation; /* FIX for mobile click */
+}
+
+.pill-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21,128,61,0.2); /* subtle focus ring */
+}
+
+/* Left color indicator */
+.indicator {
+  width: 6px;
+  height: 42px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.green .indicator { background: var(--green); }
+.red .indicator { background: var(--red); }
+
+/* Text */
+.text {
+  flex: 1;
+}
+
+.text strong {
+  display: block;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.text span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Arrow */
+.arrow {
+  font-size: 22px;
+  color: #94a3b8;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body { padding: 12px; }
+}
+
+:root {
+  --green: #16a34a;
+  --red: #dc2626;
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --border: #9ca3af;
+  --text: #111;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* IMPORTANT FOR MOBILE */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+/* Center Page */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* Card */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 26px;
+  color: #2563eb;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Buttons */
+.btn-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* BUTTON STYLE B */
+.pill-btn {
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+
+  /* REQUIRED FOR MOBILE ACTIVE */
+  touch-action: manipulation;
+  transition: none;
+}
+
+/* ACTIVE (PRESS) */
+.pill-btn:active {
+  color: #fff;
+}
+
+/* GREEN */
+.pill-btn[data-color="green"]:active {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+/* RED */
+.pill-btn[data-color="red"]:active {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .btn-group {
+    grid-template-columns: 1fr;
+  }
+}

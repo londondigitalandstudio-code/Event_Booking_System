@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events Update System</title>
+<link rel="manifest" href="manifest.json">
+ <link rel="stylesheet" href="css/update_eb_system.css">
+</head>
+
+<body>
+
+<div class="container">
+<h2>Events Update System</h2>
+
+<div class="section">
+  <h3>Search Booking</h3>
+
+<div class="row">
+  <div style="width:100%;">
+    <label>Search by Event ID or Mobile</label>
+    <input type="text" id="searchKey" placeholder="Enter Event ID or Mobile">
+  </div>
+</div>
+
+<div class="actions">
+  <button type="button" onclick="searchBooking()">Search</button>
+</div>
+</div>
+
+<div class="section">
+<h3>Customer Details</h3>
+
+<div class="row">
+  <div>
+    <label>Customer Name *</label>
+    <input type="text" id="custName">
+  </div>
+  <div>
+    <label>Father Name *</label>
+    <input type="text" id="fatherName">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Mobile Number *</label>
+    <input type="tel" id="mobile">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Address *</label>
+    <textarea rows="3" id="address"></textarea>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<h3>Event Details</h3>
+
+<div class="row">
+  <div>
+    <label>Event Cust ID</label>
+    <input type="text" id="eventId" class="readonly" readonly>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+   <label>Event Placed Date *</label>
+<input type="date" id="eventPlacedDate">
+  </div>
+  <div>
+    <label>Event Date *</label>
+    <input type="date" id="eventDate">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Event Spot *</label>
+    <select id="eventSpot">
+      <option value="">Select Event Spot</option>
+      <option>Home</option>
+      <option>Mandabam</option>
+      <option>Kovil</option>
+      <option>Party Hall</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Event Location *</label>
+    <input type="text" id="eventLocation" placeholder="Enter full location / address">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Booking Type *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="type" onclick="setBookingType('Roll')">Roll</label>
+<label><input type="radio" name="type" onclick="setBookingType('Package')">Package</label>
+    </div>
+  </div>
+</div>
+
+<div id="rollBox" class="hidden">
+  <div class="row">
+    <div>
+      <label>Cost Per Roll (₹)</label>
+      <input type="text" id="rollCost">
+    </div>
+
+    <div>
+      <label>Number of Rolls</label>
+      <input type="number" id="rollCount" min="1" placeholder="Enter rolls">
+    </div>
+
+    <div>
+      <label>Total Roll Cost (₹)</label>
+      <input type="text" id="rollTotal" readonly>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Customer Requirement *</label>
+    <select id="requirement">
+      <option value="">Select Requirement</option>
+      <option>Photo Only</option>
+      <option>Video Only</option>
+      <option>Drone Only</option>
+      <option>Photos + Videos</option>
+      <option>Photos + Videos + Drone</option>
+      <option>Photos + Videos + Drone + LED Walls</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Album Pad *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="pad">Normal Pad</label>
+      <label><input type="radio" name="pad">Acrylic Pad</label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Album Size *</label>
+    <select id="albumSize">
+      <option value="">Select Album Size</option>
+      <option>8 x 24</option>
+      <option>10 x 30</option>
+      <option>12 x 36</option>
+    </select>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<h3>Payment Details</h3>
+
+<div class="row">
+  <div>
+    <label>Order Value (₹) *</label>
+    <input type="text" id="total">
+  </div>
+
+  <div>
+    <label>Advance (₹)</label>
+    <input type="text" id="advance">
+  </div>
+
+  <div>
+    <label>Spot Payment (₹)</label>
+    <input type="text" id="spotPayment">
+  </div>
+
+  <div>
+    <label>Part Payment (₹)</label>
+    <input type="text" id="partPayment">
+  </div>
+
+  <div>
+    <label>Balance (₹)</label>
+    <input type="text" id="balance" readonly>
+  </div>
+</div>
+
+<div class="row">
+  <div style="width:100%;">
+    <label>Part Payment Date</label>
+    <input type="date" id="partPaymentDate">
+  </div>
+</div>
+
+</div>
+
+
+<div class="actions">
+  <button type="button" onclick="bookOrder()">Update Booking</button>
+  <button type="button" onclick="deleteBooking()">Delete Booking</button>
+</div>
+
+<div class="success" id="successMsg">
+✅ Your order has been booked successfully
+</div>
+
+<!-- Center Popup -->
+<div id="centerAlert" class="center-alert hidden">
+  <div class="center-alert-box">
+    <p id="centerAlertMsg"></p>
+    <button onclick="closeCenterAlert()">OK</button>
+  </div>
+</div>
+
+</div>
+
+
+
+
+<script src="js/update_eb_system.js"></script>
+
+
+
+</body>
+</html>
