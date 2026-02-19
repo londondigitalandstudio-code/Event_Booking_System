@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events Booking System</title>
+<link rel="manifest" href="manifest.json">
+ <link rel="stylesheet" href="css/eb_system_style.css">
+</head>
+
+<body>
+
+<div class="container">
+<h2>Events Booking System</h2>
+
+<div class="section">
+<h3>Customer Details</h3>
+
+<div class="row">
+  <div>
+    <label>Customer Name *</label>
+    <input type="text" id="custName">
+  </div>
+  <div>
+    <label>Father Name *</label>
+    <input type="text" id="fatherName">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Mobile Number *</label>
+    <input type="tel" id="mobile">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Address *</label>
+    <textarea rows="3" id="address"></textarea>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<h3>Event Details</h3>
+
+<div class="row">
+  <div>
+    <label>Event Cust ID</label>
+    <input type="text" id="eventId" class="readonly" readonly>
+  </div>
+
+  <div>
+    <label>Event Type *</label>
+    <select id="eventType">
+      <option value="">Select Event Type</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Puberty</option>
+      <option>Engagement</option>
+      <option>Baby Shower</option>
+      <option>Ear Piercing</option>
+      <option>Housewarming</option>
+      <option>Anniversary</option>
+      <option>Funeral</option>
+      <option>Govt Events</option>
+      <option>Political Events</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+   <label>Event Placed Date *</label>
+<input type="date" id="eventPlacedDate">
+  </div>
+  <div>
+    <label>Event Date *</label>
+    <input type="date" id="eventDate">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Event Spot *</label>
+    <select id="eventSpot">
+      <option value="">Select Event Spot</option>
+      <option>House</option>
+      <option>Mandabam</option>
+      <option>Kovil</option>
+      <option>Party Hall</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Event Spot Address*</label>
+    <input type="text" id="eventLocation" placeholder="Enter full location / address">
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Booking Type *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="type" onclick="toggleRoll(true)">Roll</label>
+      <label><input type="radio" name="type" onclick="toggleRoll(false)">Package</label>
+    </div>
+  </div>
+</div>
+
+<div id="rollBox" class="hidden">
+  <div class="row">
+    <div>
+      <label>Cost Per Roll (₹)</label>
+      <input type="text" id="rollCost">
+    </div>
+
+    <div>
+      <label>Number of Rolls</label>
+      <input type="number" id="rollCount" min="1" placeholder="Enter rolls">
+    </div>
+
+    <div>
+      <label>Total Roll Cost (₹)</label>
+      <input type="text" id="rollTotal" readonly>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Customer Requirement *</label>
+    <select id="requirement">
+      <option value="">Select Requirement</option>
+      <option>Photo Only</option>
+      <option>Video Only</option>
+      <option>Drone Only</option>
+      <option>Photos + Videos</option>
+      <option>Photos + Videos + Drone</option>
+      <option>Photos + Videos + Drone + LED Walls</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Album Pad *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="pad">Normal Pad</label>
+      <label><input type="radio" name="pad">Acrylic Pad</label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <label>Album Size *</label>
+    <select id="albumSize">
+      <option value="">Select Album Size</option>
+      <option>8 x 24</option>
+      <option>10 x 30</option>
+      <option>12 x 36</option>
+    </select>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<h3>Payment Details</h3>
+
+<!-- Visible row -->
+<div class="row">
+  <div>
+    <label>Order Value (₹) *</label>
+    <input type="text" id="total">
+  </div>
+
+  <div>
+    <label>Advance (₹) <span style="color:red">*</span></label>
+    <input type="text" id="advance">
+  </div>
+
+  <div>
+    <label>Balance (₹)</label>
+    <input type="text" id="balance" readonly>
+  </div>
+</div>
+
+<!-- Hidden backend-only fields (OUTSIDE grid) -->
+<div style="display:none;">
+  <input type="text" id="spotPayment" value="0">
+  <input type="text" id="partPayment" value="0">
+  <input type="date" id="partPaymentDate">
+</div>
+
+</div>
+
+
+<div class="actions">
+  <button onclick="bookOrder()">Book Now</button>
+
+  <!-- 🔥 Single Line Booking Status -->
+  <p id="bookingStatus" style="
+    display:none;
+    color:#00940c;
+    font-weight:500;
+    margin-top:10px;
+  "></p>
+</div>
+
+<!-- Success Popup -->
+<div id="successPopup" class="popup-overlay">
+  <div class="popup-box">
+    <h3>✅ Success</h3>
+    <p>Your event has been booked successfully</p>
+    <button onclick="handlePopupOk()">OK</button>
+  </div>
+</div>
+
+<!-- Error Popup -->
+<div id="errorPopup" class="popup-overlay">
+  <div class="popup-box error">
+    <h3>❌ Error</h3>
+    <p id="errorMsg"></p>
+    <button onclick="closeErrorPopup()">OK</button>
+  </div>
+</div>
+
+
+<script src="js/eb_system_script.js"></script>
+
+
+
+</body>
+</html>
